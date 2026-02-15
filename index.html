@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Profile</title>
+</head>
+<body>
+
+    <div id="divmaincontainer">
+
+        <header id="siteheader">
+            <h1 id="sitetitle">Personal Profile</h1>
+            <span id="sitemotto">Aspiring to make the world a better place for all...</span>
+
+        </header>
+
+        <nav id="sitenav">
+            <ul>
+                <li><a href="#aboutme">About Me</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <aside id="sitesidebar">
+            <h2>Quick Facts</h2>
+            <ul>
+                <li>Name: John Doe</li>
+                <li>Age: 30</li>
+                <li>Location: New York, USA</li>
+                <li>Occupation: Software Developer</li>
+            </ul>
+        </aside>
+
+        <main id="sitemaincontent">
+            <section id="aboutme">
+                <h2>About Me</h2>
+                <p>Hello! I'm John Doe, a passionate software developer with over 8 years of experience in building web applications. I love coding, learning new technologies, and contributing to open-source projects.</p>
+            </section>
+
+            <section id="education">
+                <h2>Education</h2>
+                <ul>
+                    <li>Bachelor of Science in Computer Science - XYZ University (2010-2014)</li>
+                    <li>Master of Science in Software Engineering - ABC University (2015-2017)</li>
+                </ul>
+            </section>
+
+            <section id="experience">
+                <h2>Experience</h2>
+                <ul>
+                    <li>Software Developer at Tech Company A (2017-Present)</li>
+                    <li>Junior Developer at Tech Company B (2014-2017)</li>
+                </ul>
+            </section>
+
+            <section id="skills">
+                <h2>Skills</h2>
+                <ul>
+                    <li>Programming Languages: JavaScript, Python, Java</li>
+                    <li>Frameworks: React, Node.js, Django</li>
+                    <li>Tools: Git, Docker, AWS</li>
+                </ul>
+            </section>
+
+            <section id="contact">
+                <h2>Contact</h2>
+                <p>Email:
+                    </p>
+             </section>
+
+        </main>
+
+        <footer id="sitefooter">
+            <p>&copy; <span id="footeryear"></span> - Simon Chirambra. All rights reserved. Last updated: <span id="footerdate"></span></p>
+        </footer>
+
+    </div>
+    
+</body>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Code to run when the DOM is ready
+        const today = new Date();
+        const year = today.getFullYear();
+        // Months are 0-indexed, so add 1
+        const month = today.getMonth() + 1; 
+        const day = today.getDate();
+
+        const formattedDate = `${month}/${day}/${year}`;
+        // Example Output: "2/15/2026"
+
+        // Set the year in the footer
+        document.getElementById("footeryear").textContent = year;
+        // Set the full date in the footer        
+        document.getElementById("footerdate").textContent = formattedDate;
+
+
+    });
+
+</script>
+
+</html>
