@@ -69,7 +69,6 @@
             <script>
                 var row = 19; //rows
                 var col = 31; //cols
-test();
 
                 document.write("<table>");
                     for(var j=0; j<row; j++){
@@ -99,10 +98,6 @@ test();
 
         <script>
             //onmouseover="document.documentElement.style.setProperty('--coln', this.cellIndex);";
-
-            function test(){
-                alert(9);
-            }
             
             function HighlightColumn(colIndex, flag) { 
                 if(colIndex === 1) { return; } //prevent first / header column
