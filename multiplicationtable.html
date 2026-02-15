@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        
+        <style>
+            :root {
+                --gbcolval: #3498db; /* Global variable */
+                --pdval: 8px;
+                --colnn: 2;
+            }
+            #divmaincontainer{
+                width:80%;
+                margin: auto;
+            }
+            table {
+                border: 1px solid orange;
+                border-collapse: collapse;
+            } 
+            tr td{
+                border:1px solid var(--gbcolval, orange); /* orange: default if var is undefined*/
+                padding: var(--pdval, 0);
+            }
+            tr:first-child,
+            td:first-child{
+                background-color: lightcyan;
+            }
+            tr:first-child>td:first-child{
+                /*content: "X"; :before */ 
+                color: crimson;
+                text-transform: uppercase;
+            }   
+            tr:nth-child(n+2):hover{ /* n starts from 0 so n+2 = 2 skipping row 1 */
+                background-image: linear-gradient(to bottom right, yellow, lightcyan, greenyellow); /* 45deg to right, to left etc */
+            }
+            .square{
+                border-image: radial-gradient(cyan, greenyellow, yellow, pink);
+                border: 2px solid coral;
+            }
+            
+            /* Highlights all cells in the hovered column (requires :has support) */
+            /* this works, but JS solution looks shorter
+            table:has(tr > *:nth-child(1):hover) tr > *:nth-child(1),
+            table:has(tr > *:nth-child(2):hover) tr > *:nth-child(2),
+            table:has(tr > *:nth-child(3):hover) tr > *:nth-child(3),
+            table:has(tr > *:nth-child(4):hover) tr > *:nth-child(4),
+            table:has(tr > *:nth-child(5):hover) tr > *:nth-child(5),
+            table:has(tr > *:nth-child(6):hover) tr > *:nth-child(6),
+            table:has(tr > *:nth-child(7):hover) tr > *:nth-child(7),
+            table:has(tr > *:nth-child(8):hover) tr > *:nth-child(8),
+            table:has(tr > *:nth-child(9):hover) tr > *:nth-child(9) {
+                background-image: linear-gradient(to bottom right, yellow, greenyellow); /* 45deg to right, to left etc /*
+            }
+            */
+            
+
+
+        </style>
+    </head>
+    <body>
+        
+        <div id="divmaincontainer">
+            
+            <h1>Multiplication Table</h1>
+
+
+            <%
+                int row = 19; //rows
+                int col = 31; //cols
+            %>
+
+            <table>
+                <% for(int j=0; j<row; j++){ %>
+                <tr>
+
+                    <% for(int k=0; k<col; k++){ %>
+                    <td <% if(j == k) {%> class="square"; <%}%>
+                        onmouseover="HighlightColumn(this.cellIndex+1, true)"  
+                        onmouseout="HighlightColumn(this.cellIndex+1, false)"
+                        onclick="if(this.parentNode.rowIndex * this.cellIndex > 0){ alert(`\${this.parentNode.rowIndex}  ❌ \${this.cellIndex}  🟰  \${this.innerText}`); }"  > <%-- escape $ as they may conflict with JSP Expression Language ${expression} syntax and cause internal error in Tomcat --%>
+                        <%=    (j==0 && k==0)? "X" : String.valueOf(((j==0)?j+1:j) * ((k==0)?k+1:k))   %>
+                    </td>
+                    <%}%>
+
+                </tr>
+                <%}%>
+            </table>
+            
+        </div>
+        
+    </body>
+</html>
+
+<script>
+    //onmouseover="document.documentElement.style.setProperty('--coln', this.cellIndex);";
+    
+    window.HighlightColumn = (colIndex, flag) => { 
+        if(colIndex === 1) { return; } //prevent first / header column
+        elems = [...document.querySelectorAll(`td:nth-child(\${colIndex})`)];
+        elems.forEach( (element, i)=> { if(i===0){ return; } //skip first row
+            // Perform an action on each element
+            element.style.backgroundImage = (flag===true)? "linear-gradient(to right, yellow, lightcyan, greenyellow)" : "none"; //backgroundColor = "greenyellow" : "transparent";
+        });
+
+    };
+    
+</script>
