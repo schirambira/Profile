@@ -66,6 +66,20 @@
             
             <h1>Multiplication Table</h1>
 
+        <script>
+            //onmouseover="document.documentElement.style.setProperty('--coln', this.cellIndex);";
+            
+            function HighlightColumn(colIndex, flag) => { alert(999)
+                if(colIndex === 1) { return; } //prevent first / header column
+                elems = [...document.querySelectorAll(`td:nth-child(${colIndex})`)];
+                elems.forEach( (element, i)=> { if(i===0){ return; } //skip first row
+                    // Perform an action on each element
+                    element.style.backgroundImage = (flag===true)? "linear-gradient(to right, yellow, lightcyan, greenyellow)" : "none"; //backgroundColor = "greenyellow" : "transparent";
+                });
+        
+            };
+            
+        </script>
 
             <script>
                 var row = 19; //rows
@@ -95,21 +109,6 @@
             </script>
             
         </div>
-
-        <script>
-            //onmouseover="document.documentElement.style.setProperty('--coln', this.cellIndex);";
-            
-            function HighlightColumn(colIndex, flag) { alert(999)
-                if(colIndex === 1) { return; } //prevent first / header column
-                elems = [...document.querySelectorAll(`td:nth-child(${colIndex})`)];
-                elems.forEach( (element, i)=> { if(i===0){ return; } //skip first row
-                    // Perform an action on each element
-                    element.style.backgroundImage = (flag===true)? "linear-gradient(to right, yellow, lightcyan, greenyellow)" : "none"; //backgroundColor = "greenyellow" : "transparent";
-                });
-        
-            };
-            
-        </script>
         
     </body>
 </html>
