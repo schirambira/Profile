@@ -76,11 +76,11 @@
                 document.write("<tr>");
 
                     for(int k=0; k<col; k++){ 
-                    document.write("<td" + if(j == k) { + " class='square'; }
+                    document.write("<td" + if(j == k) { + " class='square'" +; }
                         onmouseover='HighlightColumn(this.cellIndex+1, true)'  
                         onmouseout='HighlightColumn(this.cellIndex+1, false)'
                         onclick='+ if(this.parentNode.rowIndex * this.cellIndex > 0){ alert(`\${this.parentNode.rowIndex}  ❌ \${this.cellIndex}  🟰  \${this.innerText}`); }'  > //<%-- escape $ as they may conflict with JSP Expression Language ${expression} syntax and cause internal error in Tomcat --%>
-                            (j==0 && k==0)? "X" : String.valueOf(((j==0)?j+1:j) * ((k==0)?k+1:k)); 
+                            (j==0 && k==0)? "X" : ((j==0)?j+1:j) * ((k==0)?k+1:k); 
                     document.write("</td>");
                     }
 
