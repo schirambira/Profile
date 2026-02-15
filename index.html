@@ -22,6 +22,7 @@
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <a href="#" onclick="loadPage('multiplicationtable.html')">Multiplication Table</a>
             </ul>
         </nav>
 
@@ -116,3 +117,29 @@
 </script>
 
 </html>
+
+<script>
+
+    /** works so far **/
+    async function loadPage(url, targetSelector='#content-area') {
+        /* -- load and activate scripts -- */
+        const target = document.querySelector(targetSelector);
+        const response = await fetch(url);
+        const html = await response.text();
+
+        // 1. Create a "Range" to handle the HTML string
+        const range = document.createRange();
+        range.selectNode(target);
+
+        // 2. This creates a fragment where scripts are "active"
+        const fragment = range.createContextualFragment(html);
+
+        // 3. Clear and append (Scripts run automatically now)
+        target.innerHTML = '';
+        target.appendChild(fragment);
+    }
+
+    // Usage
+    //loadAndRun('my-page.html', '#container');
+    
+</script>
