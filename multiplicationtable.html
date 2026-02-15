@@ -69,6 +69,8 @@
             <script>
                 var row = 19; //rows
                 var col = 31; //cols
+
+                Test(); //dummy trigger
                 
                 document.write("<table>");
                     for(var j=0; j<row; j++){
@@ -97,9 +99,11 @@
     </body>
 
         <script>
+            function Test(){};
+            
             //onmouseover="document.documentElement.style.setProperty('--coln', this.cellIndex);";
             
-            HighlightColumn = (function(colIndex, flag) => { 
+            HighlightColumn = function(colIndex, flag) => { 
                 if(colIndex === 1) { return; } //prevent first / header column
                 elems = [...document.querySelectorAll(`td:nth-child(${colIndex})`)];
                 elems.forEach( (element, i)=> { if(i===0){ return; } //skip first row
@@ -107,7 +111,7 @@
                     element.style.backgroundImage = (flag===true)? "linear-gradient(to right, yellow, lightcyan, greenyellow)" : "none"; //backgroundColor = "greenyellow" : "transparent";
                 });
         
-            })();    //self-trigger 
+            };
             
         </script>
 
