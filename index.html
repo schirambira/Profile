@@ -121,7 +121,7 @@
 <script>
 
     /** works so far **/
-    async function loadPage(url, targetSelector='#content-area') {
+    async function loadPage(url, targetSelector='#maincontent') {
         /* -- load and activate scripts -- */
         const target = document.querySelector(targetSelector);
         const response = await fetch(url);
