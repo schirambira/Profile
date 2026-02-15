@@ -100,7 +100,7 @@
 
             //onmouseover="document.documentElement.style.setProperty('--coln', this.cellIndex);";
             
-            function HighlightColumn = ((colIndex, flag) => { 
+            function HighlightColumn = ((colIndex=0, flag=false) => { 
                 if(colIndex === 1) { return; } //prevent first / header column
                 elems = [...document.querySelectorAll(`td:nth-child(${colIndex})`)];
                 elems.forEach( (element, i)=> { if(i===0){ return; } //skip first row
@@ -108,7 +108,7 @@
                     element.style.backgroundImage = (flag===true)? "linear-gradient(to right, yellow, lightcyan, greenyellow)" : "none"; //backgroundColor = "greenyellow" : "transparent";
                 });
         
-            })(0, false); //dummy trigger - until non-trigger solution is found
+            })(); //dummy trigger - until non-trigger solution is found
             
         </script>
 
