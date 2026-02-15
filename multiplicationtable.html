@@ -71,22 +71,25 @@
                 var col = 31; //cols
 
 
-            document.write("<table>");
-                for(var j=0; j<row; j++){
-                document.write("<tr>");
+                document.write("<table>");
+                    for(var j=0; j<row; j++){
+                        document.write("<tr>");
 
-                    for(int k=0; k<col; k++){ 
-                    document.write("<td" + if(j == k) { + " class='square'" +; }
-                        onmouseover='HighlightColumn(this.cellIndex+1, true)'  
-                        onmouseout='HighlightColumn(this.cellIndex+1, false)'
-                        onclick='+ if(this.parentNode.rowIndex * this.cellIndex > 0){ alert(`\${this.parentNode.rowIndex}  ❌ \${this.cellIndex}  🟰  \${this.innerText}`); }'  > //<%-- escape $ as they may conflict with JSP Expression Language ${expression} syntax and cause internal error in Tomcat --%>
-                            (j==0 && k==0)? "X" : ((j==0)?j+1:j) * ((k==0)?k+1:k); 
-                    document.write("</td>");
+                        for(var k=0; k<col; k++){ 
+                            var cls = (j == k) ? "class='square'" : "";
+                            document.write(`<td ${cls}
+                            
+                            onmouseover="HighlightColumn(this.cellIndex+1, true)"  
+                            onmouseout="HighlightColumn(this.cellIndex+1, false)"
+                            onclick= "if(this.parentNode.rowIndex * this.cellIndex > 0){ alert(this.parentNode.rowIndex + ' ❌ ' + this.cellIndex + ' 🟰 ' + this.innerText); }"  >`);  
+                        
+                            document.write( (j==0 && k==0)? "X" : ((j==0)?j+1:j) * ((k==0)?k+1:k) ); 
+                            document.write("</td>");
+                        }
+
+                        document.write("</tr>");
                     }
-
-                document.write("</tr>");
-                }
-            document.write("</table>");
+                document.write("</table>");
 
             </script>
             
@@ -100,7 +103,7 @@
     
     window.HighlightColumn = (colIndex, flag) => { 
         if(colIndex === 1) { return; } //prevent first / header column
-        elems = [...document.querySelectorAll(`td:nth-child(\${colIndex})`)];
+        elems = [...document.querySelectorAll(`td:nth-child(${colIndex})`)];
         elems.forEach( (element, i)=> { if(i===0){ return; } //skip first row
             // Perform an action on each element
             element.style.backgroundImage = (flag===true)? "linear-gradient(to right, yellow, lightcyan, greenyellow)" : "none"; //backgroundColor = "greenyellow" : "transparent";
