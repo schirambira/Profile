@@ -5,6 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Profile</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <style>
+
+    :root {
+                --gbcolval: #3498db; /* Global variable */
+                --pdval: 8px;
+                --colnn: 2;
+            }
+            #divmaincontainer{
+                width:80%;
+                margin: auto;
+            }
+            table {
+                border: 1px solid orange;
+                border-collapse: collapse;
+            } 
+            tr td{
+                border:1px solid var(--gbcolval, orange); /* orange: default if var is undefined*/
+                padding: var(--pdval, 0);
+            }
+            tr:first-child,
+            td:first-child{
+                background-color: lightcyan;
+            }
+            tr:first-child>td:first-child{
+                /*content: "X"; :before */ 
+                color: crimson;
+                text-transform: uppercase;
+            }   
+            tr:nth-child(n+2):hover{ /* n starts from 0 so n+2 = 2 skipping row 1 */
+                background-image: linear-gradient(to bottom right, yellow, lightcyan, greenyellow); /* 45deg to right, to left etc */
+            }
+            .square{
+                border-image: radial-gradient(cyan, greenyellow, yellow, pink);
+                border: 2px solid coral;
+            }
+            
+            /* Highlights all cells in the hovered column (requires :has support) */
+            /* this works, but JS solution looks shorter
+            table:has(tr > *:nth-child(1):hover) tr > *:nth-child(1),
+            table:has(tr > *:nth-child(2):hover) tr > *:nth-child(2),
+            table:has(tr > *:nth-child(3):hover) tr > *:nth-child(3),
+            table:has(tr > *:nth-child(4):hover) tr > *:nth-child(4),
+            table:has(tr > *:nth-child(5):hover) tr > *:nth-child(5),
+            table:has(tr > *:nth-child(6):hover) tr > *:nth-child(6),
+            table:has(tr > *:nth-child(7):hover) tr > *:nth-child(7),
+            table:has(tr > *:nth-child(8):hover) tr > *:nth-child(8),
+            table:has(tr > *:nth-child(9):hover) tr > *:nth-child(9) {
+                background-image: linear-gradient(to bottom right, yellow, greenyellow); /* 45deg to right, to left etc /*
+            }
+            */
+        
+    </style>
+    
 </head>
 <body>
 
