@@ -69,7 +69,7 @@
             <script>
                 var row = 19; //rows
                 var col = 31; //cols
-                HighlightColumn();
+                Test();
                 document.write("<table>");
                     for(var j=0; j<row; j++){
                         document.write("<tr>");
@@ -99,7 +99,9 @@
         <script>
 
             //onmouseover="document.documentElement.style.setProperty('--coln', this.cellIndex);";
-            
+            function Test(){
+                var x=1*2;
+            }
             function HighlightColumn = (colIndex, flag) => { 
                 if(colIndex === 1) { return; } //prevent first / header column
                 elems = [...document.querySelectorAll(`td:nth-child(${colIndex})`)];
