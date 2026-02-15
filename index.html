@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Profile</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
     
 </head>
 <body>
@@ -141,6 +140,21 @@
 
     // Usage
     //loadAndRun('my-page.html', '#container');
+    
+</script>
+
+<script>
+
+    function loadCSS(filename) {
+      const link = document.createElement("link");
+      link.setAttribute("rel", "stylesheet");
+      link.setAttribute("type", "text/css");
+      link.setAttribute("href", filename);
+      document.head.appendChild(link);
+    }
+    
+    // Call this function when your dynamic content loads
+    loadCSS("css/style.css");
     
 </script>
 
