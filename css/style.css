@@ -31,6 +31,7 @@
         border-image: radial-gradient(cyan, greenyellow, yellow, pink);
         border: 2px solid coral;
     }
+    p{color:blue;}
     
     /* Highlights all cells in the hovered column (requires :has support) */
     /* this works, but JS solution looks shorter
