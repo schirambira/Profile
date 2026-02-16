@@ -77,7 +77,7 @@
                         for(var j=0; j<row; j++){
                             document.write("<tr>");
     
-                            //HighlightColumn();
+                            HighlightColumn();
                             for(var k=0; k<col; k++){ 
                                 var cls = (j == k) ? "class='square'" : "";
                                 document.write(`<td ${cls}
@@ -106,7 +106,7 @@
 
             //onmouseover="document.documentElement.style.setProperty('--coln', this.cellIndex);";
 
-            let HighlightColumn =(colIndex, flag) => { 
+            function HighlightColumn(colIndex, flag){ 
                 if(colIndex === 1) { return; } //prevent first / header column
                 elems = [...document.querySelectorAll(`td:nth-child(${colIndex})`)];
                 elems.forEach( (element, i)=> { if(i===0){ return; } //skip first row
