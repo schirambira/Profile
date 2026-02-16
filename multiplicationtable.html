@@ -66,33 +66,37 @@
             
             <h1>Multiplication Table</h1>
 
-            <script>
+            <div id="divtable">
                 
-                var row = 19; //rows
-                var col = 31; //cols
+                <script>
+                    
+                    var row = 19; //rows
+                    var col = 31; //cols
 
-                document.write("<table>");
-                    for(var j=0; j<row; j++){
-                        document.write("<tr>");
-
-                        HighlightColumn();
-                        for(var k=0; k<col; k++){ 
-                            var cls = (j == k) ? "class='square'" : "";
-                            document.write(`<td ${cls}
+                    var divElement = document.querySelector("#divtable");
+                    divElement.innerHtml="<table>";
+                        for(var j=0; j<row; j++){
+                            divElement.innerHtml+="<tr>";
+    
+                            for(var k=0; k<col; k++){ 
+                                var cls = (j == k) ? "class='square'" : "";
+                                ddivElement.innerHtml+=`<td ${cls}
+                                
+                                onmouseover="HighlightColumn(this.cellIndex+1, true)"  
+                                onmouseout="HighlightColumn(this.cellIndex+1, false)"
+                                onclick= "if(this.parentNode.rowIndex * this.cellIndex > 0){ alert(this.parentNode.rowIndex + ' ❌ ' + this.cellIndex + ' 🟰 ' + this.innerText); }"  >`;  
                             
-                            onmouseover="HighlightColumn(this.cellIndex+1, true)"  
-                            onmouseout="HighlightColumn(this.cellIndex+1, false)"
-                            onclick= "if(this.parentNode.rowIndex * this.cellIndex > 0){ alert(this.parentNode.rowIndex + ' ❌ ' + this.cellIndex + ' 🟰 ' + this.innerText); }"  >`);  
-                        
-                            document.write( (j==0 && k==0)? "X" : ((j==0)?j+1:j) * ((k==0)?k+1:k) ); 
-                            document.write("</td>");
+                                divElement.innerHtml+= (j==0 && k==0)? "X" : ((j==0)?j+1:j) * ((k==0)?k+1:k); 
+                                divElement.innerHtml+="</td>";
+                            }
+    
+                            divElement.innerHtml+="</tr>";
                         }
+                    divElement.innerHtml+="</table>";
+    
+                </script>
 
-                        document.write("</tr>");
-                    }
-                document.write("</table>");
-
-            </script>
+            </div>
             
         </div>
         
