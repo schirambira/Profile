@@ -82,10 +82,7 @@ HighlightColumn();
                                 var cls = (j == k) ? "class='square'" : "";
                                 ddivElement.innerHtml+=`<td ${cls}
                                 
-                                onmouseover="HighlightColumn(this.cellIndex+1, true)"  
-                                onmouseout="HighlightColumn(this.cellIndex+1, false)"
-                                onclick= "if(this.parentNode.rowIndex * this.cellIndex > 0){ alert(this.parentNode.rowIndex + ' ❌ ' + this.cellIndex + ' 🟰 ' + this.innerText); }"  >`;  
-                            
+                              
                                 divElement.innerHtml+= (j==0 && k==0)? "X" : ((j==0)?j+1:j) * ((k==0)?k+1:k); 
                                 divElement.innerHtml+="</td>";
                             }
