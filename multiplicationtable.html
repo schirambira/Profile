@@ -67,6 +67,18 @@
             <h1>Multiplication Table</h1>
 
             <script>
+
+            function HighlightColumn(colIndex, flag) => { 
+                if(colIndex === 1) { return; } //prevent first / header column
+                elems = [...document.querySelectorAll(`td:nth-child(${colIndex})`)];
+                elems.forEach( (element, i)=> { if(i===0){ return; } //skip first row
+                    // Perform an action on each element
+                    element.style.backgroundImage = (flag===true)? "linear-gradient(to right, yellow, lightcyan, greenyellow)" : "none"; //backgroundColor = "greenyellow" : "transparent";
+                });
+        
+            }; 
+                //
+                
                 var row = 19; //rows
                 var col = 31; //cols
 
@@ -100,7 +112,7 @@
 
             //onmouseover="document.documentElement.style.setProperty('--coln', this.cellIndex);";
 
-            (function HighlightColumn(colIndex, flag) => { 
+            /*function HighlightColumn(colIndex, flag) => { 
                 if(colIndex === 1) { return; } //prevent first / header column
                 elems = [...document.querySelectorAll(`td:nth-child(${colIndex})`)];
                 elems.forEach( (element, i)=> { if(i===0){ return; } //skip first row
@@ -108,8 +120,8 @@
                     element.style.backgroundImage = (flag===true)? "linear-gradient(to right, yellow, lightcyan, greenyellow)" : "none"; //backgroundColor = "greenyellow" : "transparent";
                 });
         
-            })(); 
-            
+            }; 
+            */
         </script>
 
     
