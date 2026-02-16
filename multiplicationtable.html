@@ -72,24 +72,27 @@
                     
                     var row = 19; //rows
                     var col = 31; //cols
-
-                    var divElement = document.querySelector("#divtable");
-                    divElement.innerHtml="<table>";
-                        for(var j=0; j<row; j++){
-                            divElement.innerHtml+="<tr>";
     
+                    document.write("<table>");
+                        for(var j=0; j<row; j++){
+                            document.write("<tr>");
+    
+                            HighlightColumn();
                             for(var k=0; k<col; k++){ 
                                 var cls = (j == k) ? "class='square'" : "";
-                                divElement.innerHtml+=`<td ${cls}>`;
+                                document.write(`<td ${cls}
                                 
-                              
-                                divElement.innerHtml+= (j==0 && k==0)? "X" : ((j==0)?j+1:j) * ((k==0)?k+1:k); 
-                                divElement.innerHtml+="</td>";
+                                onmouseover="HighlightColumn(this.cellIndex+1, true)"  
+                                onmouseout="HighlightColumn(this.cellIndex+1, false)"
+                                onclick= "if(this.parentNode.rowIndex * this.cellIndex > 0){ alert(this.parentNode.rowIndex + ' ❌ ' + this.cellIndex + ' 🟰 ' + this.innerText); }"  >`);  
+                            
+                                document.write( (j==0 && k==0)? "X" : ((j==0)?j+1:j) * ((k==0)?k+1:k) ); 
+                                document.write("</td>");
                             }
     
-                            divElement.innerHtml+="</tr>";
+                            document.write("</tr>");
                         }
-                    divElement.innerHtml+="</table>";
+                    document.write("</table>");
     
                 </script>
 
@@ -103,7 +106,7 @@
 
             //onmouseover="document.documentElement.style.setProperty('--coln', this.cellIndex);";
 
-            function HighlightColumn(colIndex, flag){  
+            function HighlightColumn(colIndex, flag) => { 
                 if(colIndex === 1) { return; } //prevent first / header column
                 elems = [...document.querySelectorAll(`td:nth-child(${colIndex})`)];
                 elems.forEach( (element, i)=> { if(i===0){ return; } //skip first row
