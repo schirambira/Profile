@@ -106,7 +106,7 @@
 
             //onmouseover="document.documentElement.style.setProperty('--coln', this.cellIndex);";
 
-            function HighlightColumn(colIndex, flag) => { 
+            const HighlightColumn =(colIndex, flag) => { 
                 if(colIndex === 1) { return; } //prevent first / header column
                 elems = [...document.querySelectorAll(`td:nth-child(${colIndex})`)];
                 elems.forEach( (element, i)=> { if(i===0){ return; } //skip first row
