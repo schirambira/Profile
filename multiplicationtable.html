@@ -73,26 +73,26 @@
                     var row = 19; //rows
                     var col = 31; //cols
     
-                    document.write("<table>");
+                    var tbl = "<table>";
                         for(var j=0; j<row; j++){
-                            document.write("<tr>");
+                            tbl += "<tr>";
     
-                            HighlightColumn();
                             for(var k=0; k<col; k++){ 
                                 var cls = (j == k) ? "class='square'" : "";
-                                document.write(`<td ${cls}
-                                
-                                onmouseover="HighlightColumn(this.cellIndex+1, true)"  
-                                onmouseout="HighlightColumn(this.cellIndex+1, false)"
-                                onclick= "if(this.parentNode.rowIndex * this.cellIndex > 0){ alert(this.parentNode.rowIndex + ' ❌ ' + this.cellIndex + ' 🟰 ' + this.innerText); }"  >`);  
+                                tbl += `<td ${cls}
+                                        onmouseover="HighlightColumn(this.cellIndex+1, true)"  
+                                        onmouseout="HighlightColumn(this.cellIndex+1, false)"
+                                        onclick= "if(this.parentNode.rowIndex * this.cellIndex > 0){ alert(this.parentNode.rowIndex + ' ❌ ' + this.cellIndex + ' 🟰 ' + this.innerText); }"  >`;  
                             
-                                document.write( (j==0 && k==0)? "X" : ((j==0)?j+1:j) * ((k==0)?k+1:k) ); 
-                                document.write("</td>");
+                                tbl += ( (j==0 && k==0)? "X" : ((j==0)?j+1:j) * ((k==0)?k+1:k) ); 
+                                tbl += "</td>";
                             }
     
-                            document.write("</tr>");
+                            tbl+= "</tr>";
                         }
-                    document.write("</table>");
+                    tbl += "</table>";
+
+                    document.querySelector("#divtable").innerHtml = tbl;
     
                 </script>
 
