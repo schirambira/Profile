@@ -1,165 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Profile</title>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        
+        <style>
+            :root {
+                --gbcolval: #3498db; /* Global variable */
+                --pdval: 8px;
+                --colnn: 2;
+            }
+            #divmaincontainer{
+                width:80%;
+                margin: auto;
+            }
+            table {
+                border: 1px solid orange;
+                border-collapse: collapse;
+            } 
+            tr td{
+                border:1px solid var(--gbcolval, orange); /* orange: default if var is undefined*/
+                padding: var(--pdval, 0);
+            }
+            tr:first-child,
+            td:first-child{
+                background-color: lightcyan;
+            }
+            tr:first-child>td:first-child{
+                /*content: "X"; :before */ 
+                color: crimson;
+                text-transform: uppercase;
+            }   
+            tr:nth-child(n+2):hover{ /* n starts from 0 so n+2 = 2 skipping row 1 */
+                background-image: linear-gradient(to bottom right, yellow, lightcyan, greenyellow); /* 45deg to right, to left etc */
+            }
+            .square{
+                border-image: radial-gradient(cyan, greenyellow, yellow, pink);
+                border: 2px solid coral;
+            }
+            
+            /* Highlights all cells in the hovered column (requires :has support) */
+            /* this works, but JS solution looks shorter
+            table:has(tr > *:nth-child(1):hover) tr > *:nth-child(1),
+            table:has(tr > *:nth-child(2):hover) tr > *:nth-child(2),
+            table:has(tr > *:nth-child(3):hover) tr > *:nth-child(3),
+            table:has(tr > *:nth-child(4):hover) tr > *:nth-child(4),
+            table:has(tr > *:nth-child(5):hover) tr > *:nth-child(5),
+            table:has(tr > *:nth-child(6):hover) tr > *:nth-child(6),
+            table:has(tr > *:nth-child(7):hover) tr > *:nth-child(7),
+            table:has(tr > *:nth-child(8):hover) tr > *:nth-child(8),
+            table:has(tr > *:nth-child(9):hover) tr > *:nth-child(9) {
+                background-image: linear-gradient(to bottom right, yellow, greenyellow); /* 45deg to right, to left etc /*
+            }
+            */
+            
+
+
+        </style>
+    </head>
+    <body>
+        
+        <div id="divmaincontainer">
+            
+            <h1>Multiplication Table</h1>
+
+            <div id="divtable">
+                
+                <script>
+                    
+                    var row = 19; //rows
+                    var col = 31; //cols
     
-</head>
-<body>
-
-    <div id="divmaincontainer">
-
-        <header id="siteheader">
-            <h1 id="sitetitle">Personal Profile</h1>
-            <span id="sitemotto">Aspiring to make the world a better place for all...</span>
-
-        </header>
-
-        <nav id="sitenav">
-            <ul>
-                <li><a href="#aboutme">About Me</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#" onclick="loadPage('multiplicationtable.html')">Multiplication Table</a></li>
-            </ul>
-        </nav>
-
-        <aside id="sitesidebar">
-            <h2>Quick Facts</h2>
-            <ul>
-                <li>Name: John Doe</li>
-                <li>Age: M</li>
-                <li>Location: New York, USA</li>
-                <li>Occupation: Software Developer</li>
-            </ul>
-        </aside>
-
-        <main id="maincontent">
-            <section id="aboutme">
-                <h2>About Me</h2>
-                <p>Hello! I'm John Doe, a passionate software developer with over 8 years of experience in building web applications. I love coding, learning new technologies, and contributing to open-source projects.</p>
-            </section>
-
-            <section id="education">
-                <h2>Education</h2>
-                <ul>
-                    <li>Bachelor of Science in Computer Science - XYZ University (2010-2014)</li>
-                    <li>Master of Science in Software Engineering - ABC University (2015-2017)</li>
-                </ul>
-            </section>
-
-            <section id="experience">
-                <h2>Experience</h2>
-                <ul>
-                    <li>Software Developer at Tech Company A (2017-Present)</li>
-                    <li>Junior Developer at Tech Company B (2014-2017)</li>
-                </ul>
-            </section>
-
-            <section id="skills">
-                <h2>Skills</h2>
-                <ul>
-                    <li>Programming Languages: JavaScript, Python, Java</li>
-                    <li>Frameworks: React, Node.js, Django</li>
-                    <li>Tools: Git, Docker, AWS</li>
-                </ul>
-            </section>
-
-            <section id="contact">
-                <h2>Contact</h2>
-                <p>Email:
-                    </p>
-             </section>
-
-        </main>
-
-        <footer id="sitefooter">
-            <p>&copy; <span id="footeryear"></span> - Simon Chirambra. All rights reserved. Last updated: <span id="footerdate"></span></p>
-            <hr>
-            <section id="socialmedia">
-                <p>Facebook: <a href="https://www.facebook.com/simon.chirambra">Simon Chirambra</a></p>
-                <p>Twitter: <a href="https://twitter.com/simonchirambra">Simon Chirambra</a></p>
-                <p>LinkedIn: <a href="https://www.linkedin.com/in/simon-chirambra-123456789/">Simon Chirambra</a></p>
-                <p>WhatsApp: <a href="https://wa.me/+26773224888">Simon Chirambira</a></p>
-                <p>GitHub: <a href="https://github.com/simonchirambra">Simon Chirambra</a></p>
-                <p>Email: <a href="mailto:simon.chirambra@example.com">simon.chirambra@example.com</a></p>
-                <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
-            </section>
-        </footer>
-
-    </div>
-
-</body>
-
-<script>
-
-    document.addEventListener("DOMContentLoaded", function() {
-        // Code to run when the DOM is ready
-        const today = new Date();
-        const year = today.getFullYear();
-        // Months are 0-indexed, so add 1
-        const month = today.getMonth() + 1; 
-        const day = today.getDate();
-
-        const formattedDate = `${month}/${day}/${year}`;
-        // Example Output: "2/15/2026"
-
-        // Set the year in the footer
-        document.getElementById("footeryear").textContent = year;
-        // Set the full date in the footer        
-        document.getElementById("footerdate").textContent = formattedDate;
-
-
-    });
-
-</script>
-
-<script>
-
-    /** works so far **/
-    async function loadPage(url, targetSelector='#maincontent') {
-        /* -- load and activate scripts -- */
-        const target = document.querySelector(targetSelector);
-        const response = await fetch(url);
-        const html = await response.text();
-
-        // 1. Create a "Range" to handle the HTML string
-        const range = document.createRange();
-        range.selectNode(target);
-
-        // 2. This creates a fragment where scripts are "active"
-        const fragment = range.createContextualFragment(html);
-
-        // 3. Clear and append (Scripts run automatically now)
-        target.innerHTML = '';
-        target.appendChild(fragment);
-
-        //load css
-        loadCSS("css/style.css");
-    }
-
-    // Usage
-    //loadAndRun('my-page.html', '#container');
+                    var tbl="";
+                    tbl += "<table>"
+                        for(var j=0; j<row; j++){
+                            tbl += "<tr>";
     
-</script>
-
-<script>
-
-    function loadCSS(filename) {
-      const link = document.createElement("link");
-      link.setAttribute("rel", "stylesheet");
-      link.setAttribute("type", "text/css");
-      link.setAttribute("href", filename);
-      document.head.appendChild(link);
-    }
+                            for(var k=0; k<col; k++){ 
+                                var cls = (j == k) ? "class='square'" : "";
+                                tbl += `<td ${cls}
+                                        onmouseover="HighlightColumn(this.cellIndex+1, true)"  
+                                        onmouseout="HighlightColumn(this.cellIndex+1, false)"
+                                        onclick= "if(this.parentNode.rowIndex * this.cellIndex > 0){ alert(this.parentNode.rowIndex + ' ❌ ' + this.cellIndex + ' 🟰 ' + this.innerText); }"  >`;  
+                            
+                                tbl += (j==0 && k==0)? "X" : ((j==0)?j+1:j) * ((k==0)?k+1:k); //header row and column
+                                tbl += "</td>";
+                            }
     
-    // Call this function when your dynamic content loads
-    //loadCSS("css/style.css");
-    
-</script>
+                            tbl += "</tr>";
+                        }
+                    tbl += "</table>";
+                    document.getElementById("divtable").innerHTML = tbl;
 
+    
+                </script>   
+
+            </div>
+            
+        </div>
+        
+    </body>
+
+        <script>
+
+            //onmouseover="document.documentElement.style.setProperty('--coln', this.cellIndex);";
+
+            const HighlightColumn = (colIndex, flag) => { 
+                if(colIndex === 1) { return; } //prevent first / header column
+                elems = [...document.querySelectorAll(`td:nth-child(${colIndex})`)];
+                elems.forEach( (element, i)=> { if(i===0){ return; } //skip first row
+                    // Perform an action on each element
+                    element.style.backgroundImage = (flag===true)? "linear-gradient(to right, yellow, lightcyan, greenyellow)" : "none"; //backgroundColor = "greenyellow" : "transparent";
+                });
+        
+            }; 
+            
+        </script>
+
+    
 </html>
+
 
