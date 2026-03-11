@@ -42,16 +42,16 @@
             }
             
             /* Highlights all cells in the hovered column (requires :has support) */
-            /* this works, but JS solution looks shorter
-            table:has(tr > *:nth-child(1):hover) tr > *:nth-child(1),
-            table:has(tr > *:nth-child(2):hover) tr > *:nth-child(2),
-            table:has(tr > *:nth-child(3):hover) tr > *:nth-child(3),
-            table:has(tr > *:nth-child(4):hover) tr > *:nth-child(4),
-            table:has(tr > *:nth-child(5):hover) tr > *:nth-child(5),
-            table:has(tr > *:nth-child(6):hover) tr > *:nth-child(6),
-            table:has(tr > *:nth-child(7):hover) tr > *:nth-child(7),
-            table:has(tr > *:nth-child(8):hover) tr > *:nth-child(8),
-            table:has(tr > *:nth-child(9):hover) tr > *:nth-child(9) {
+            /* this works, but JS solution looks shorter 
+            table:has( td:nth-child(1):hover ) td:nth-child(1),
+            table:has( td:nth-child(2):hover ) td:nth-child(2),
+            table:has( td:nth-child(3):hover ) td:nth-child(3),
+            table:has( td:nth-child(4):hover ) td:nth-child(4),
+            table:has( td:nth-child(5):hover ) td:nth-child(5),
+            table:has( td:nth-child(6):hover ) td:nth-child(6),
+            table:has( td:nth-child(7):hover ) td:nth-child(7),
+            table:has( td:nth-child(8):hover ) td:nth-child(8),
+            table:has( td:nth-child(9):hover ) td:nth-child(9) {
                 background-image: linear-gradient(to bottom right, yellow, greenyellow); /* 45deg to right, to left etc /*
             }
             */
@@ -63,36 +63,56 @@
     <body>
         
         <div id="divmaincontainer">
+
+            <h1>Multiplication Table</h1>
+
+            <label for="start" class="lbl">Start</label>
+            <input type="number" id="start" name="start" placeholder="Start" required  oninvalid="this.setCustomValidity('Please Enter Start Value Here')" oninput="this.setCustomValidity('')" value="0">
+
+            <label for="end" class="lbl">End</label>
+            <input type="number" id="end" name="end" class="txt" placeholder="End" required  oninvalid="this.setCustomValidity('Please Enter End Value Here')" oninput="this.setCustomValidity('')" value="30">
+            <input type="button" value="Re-Load" onclick="LoadTable()" >
+            <br>
+            <br>
+
             
             <h1>Multiplication Table</h1>
 
             <div id="divtable">
                 
                 <script>
+
+                    //check dom content loaded
+                    document.addEventListener("DOMContentLoaded", (event) => {
+                        LoadTable();
+                    });
                     
-                    var row = 19; //rows
-                    var col = 31; //cols
-    
-                    var tbl="";
-                    tbl += "<table>"
-                        for(var j=0; j<row; j++){
-                            tbl += "<tr>";
-    
-                            for(var k=0; k<col; k++){ 
-                                var cls = (j == k) ? "class='square'" : "";
-                                tbl += `<td ${cls}
-                                        onmouseover="HighlightColumn(this.cellIndex+1, true)"  
-                                        onmouseout="HighlightColumn(this.cellIndex+1, false)"
-                                        onclick= "if(this.parentNode.rowIndex * this.cellIndex > 0){ alert(this.parentNode.rowIndex + ' ❌ ' + this.cellIndex + ' 🟰 ' + this.innerText); }"  >`;  
-                            
-                                tbl += (j==0 && k==0)? "X" : ((j==0)?j+1:j) * ((k==0)?k+1:k); //header row and column
-                                tbl += "</td>";
+                    function LoadTable(){
+                        var start = Number(document.querySelector("#start").value); //start
+                        var end = Number(document.querySelector("#end").value); //end
+
+                        var tbl="";
+                        tbl += "<table>"
+                            for(var j=start; j<=end; j++){
+                                tbl += "<tr>";
+        
+                                for(var k=start; k<=end; k++){ 
+                                    var cls = (j == k) ? "class='square'" : "";
+                                    tbl += `<td ${cls}
+                                            onmouseover="HighlightColumn(this.cellIndex+1, true)"  
+                                            onmouseout="HighlightColumn(this.cellIndex+1, false)"
+                                            onclick= "if(this.parentNode.rowIndex * this.cellIndex > 0){ alert(this.parentNode.rowIndex + ' ❌ ' + this.cellIndex + ' 🟰 ' + this.innerText); }"  >`;  
+
+                                    tbl += (j==start && k==start ? "X" : j==start ? k : k==start ? j : j*k); //header row and column
+                                    tbl += "</td>";
+                                }
+        
+                                tbl += "</tr>";
                             }
-    
-                            tbl += "</tr>";
-                        }
-                    tbl += "</table>";
-                    document.getElementById("divtable").innerHTML = tbl;
+                        tbl += "</table>";
+                        document.getElementById("divtable").innerHTML = tbl;
+                        
+                    }
 
     
                 </script>   
