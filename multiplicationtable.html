@@ -107,7 +107,7 @@
                                     tbl += `<td ${cls}
                                             onmouseover="HighlightColumn(this.cellIndex+1, true)"  
                                             onmouseout="HighlightColumn(this.cellIndex+1, false)"
-                                            onclick= "if(this.parentNode.rowIndex * this.cellIndex > 0){ alert( ${j} + ' ❌ ' + ${k} + ' 🟰 ' + this.innerText); }"  >`;  
+                                            onclick= "if(this.parentNode.rowIndex * this.cellIndex > 0){ alert( ${j} + '  ❌ ' + ${k} + ' 🟰 ' + this.innerText); }"  >`;  
 
                                     tbl += (j==start && k==start ? "X" : j==start ? k : k==start ? j : j*k); //header row and column
                                     tbl += "</td>";
