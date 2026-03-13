@@ -40,6 +40,14 @@
                 border-image: radial-gradient(cyan, greenyellow, yellow, pink);
                 border: 2px solid coral;
             }
+
+            tr:nth-child(1) td, td:nth-child(1) {
+                position: sticky; /* sticky properties */
+                top: 0; /* Sticks to the top of the scroll container */
+                left:0; /* Sticks to the left of the scroll container */
+                background-image: radial-gradient(greenyellow, lightcyan, cyan); /* Add a background to prevent content from showing through */
+                z-index: 10; /* Ensures the header is above other content when scrolling */
+            }
             
             /* Highlights all cells in the hovered column (requires :has support) */
             /* this works, but JS solution looks shorter 
@@ -75,8 +83,6 @@
             <br>
             <br>
 
-            
-            <h1>Multiplication Table</h1>
 
             <div id="divtable">
                 
