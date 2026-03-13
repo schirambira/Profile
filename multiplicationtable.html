@@ -16,6 +16,9 @@
                 width:80%;
                 margin: auto;
             }
+            #divrange{
+                border: 1px solid teal;
+            }
             table {
                 border: 1px solid orange;
                 border-collapse: collapse;
@@ -74,12 +77,14 @@
 
             <h1>Multiplication Table</h1>
 
-            <label for="start" class="lbl">Start</label>
-            <input type="number" id="start" name="start" placeholder="Start" required  oninvalid="this.setCustomValidity('Please Enter Start Value Here')" oninput="this.setCustomValidity('')" value="0">
-
-            <label for="end" class="lbl">End</label>
-            <input type="number" id="end" name="end" class="txt" placeholder="End" required  oninvalid="this.setCustomValidity('Please Enter End Value Here')" oninput="this.setCustomValidity('')" value="30">
-            <input type="button" value="Re-Load" onclick="LoadTable()" >
+            <div id="divrange">
+                <label for="start" class="lbl">Start</label>
+                <input type="number" id="start" name="start" placeholder="Start" required  oninvalid="this.setCustomValidity('Please Enter Start Value Here')" oninput="this.setCustomValidity('')" value="0">
+    
+                <label for="end" class="lbl">End</label>
+                <input type="number" id="end" name="end" class="txt" placeholder="End" required  oninvalid="this.setCustomValidity('Please Enter End Value Here')" oninput="this.setCustomValidity('')" value="30">
+                <input type="button" value="Re-Load" onclick="LoadTable()" >
+            </div>
             <br>
             <br>
 
