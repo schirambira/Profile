@@ -33,7 +33,7 @@
                 <li><a href="#conferences">Conferences</a></li>
                 <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#currentstudies">Current Studies</a></li>
-                <li><a href="#" onclick="loadPage('https//www.ai4d.ai/calls')">AI4D Calls</a></li>
+                <li><a href="#" onclick="loadPage('https//www.ai4d.ai/calls/')">AI4D Calls</a></li>
                 <li><a href="#" onclick="loadPage('multiplicationtable.html')">Multiplication Table</a></li>
                 <li><a href="#" onclick="loadPage('weatherservice.html')">Weather Service</a></li>
             </ul>
@@ -136,7 +136,7 @@
         /* -- load and activate scripts -- */
         const target = document.querySelector(targetSelector);
         const response = await fetch(url);
-        const html = await response.text(); alert(html);
+        const html = await response.text();
 
         // 1. Create a "Range" to handle the HTML string
         const range = document.createRange();
