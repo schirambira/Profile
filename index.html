@@ -136,7 +136,7 @@
         /* -- load and activate scripts -- */
         const target = document.querySelector(targetSelector);
         const response = await fetch(url);
-        const html = await response.text();
+        const html = await response.text(); alert(html);
 
         // 1. Create a "Range" to handle the HTML string
         const range = document.createRange();
